@@ -17,10 +17,11 @@ RUN wget -O /kaniko/jq \
     tar -xvzf /crane.tar.gz crane -C /kaniko && \
     rm /crane.tar.gz
 
+COPY zscaler.pem /etc/ssl/certs/zscaler.pem
 COPY entrypoint.sh /
 COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-LABEL repository="https://github.com/aevea/action-kaniko" \
+LABEL repository="https://github.com/ampie/action-kaniko" \
     maintainer="Alex Viscreanu <alexviscreanu@gmail.com>"
